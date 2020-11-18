@@ -43,7 +43,7 @@ class BinarySearch {
     }
 
     findIMin(current = this.root) {
-        if (current === null) {
+        if (current == null) {
             return null;
         }
         // or simply while (current.left)...
@@ -58,6 +58,22 @@ class BinarySearch {
             return this.findRMin(current.left)
         } else {
             // when current.left is null, we are at the min node
+            return current.data;
+        }
+    }
+    findIMax(current = this.root) {
+        if (current == null) {
+            return null;
+        }
+        while (current.right !== null) {
+            current = current.right;
+        }
+        return current.data;
+    }
+    findRMax(current = this.root) {
+        if (current.right !== null) {
+            return this.findRMax(current.right)
+        } else {
             return current.data;
         }
     }
@@ -105,3 +121,6 @@ console.log(emptyTree.isEmpty()); // true
 console.log(oneNodeTree.isEmpty()); // false
 console.log(bigTree.findRMin()) // 4
 console.log(bigTree.findIMin()) // 4
+console.log(bigTree.findIMax()) // 90
+console.log(bigTree.findRMax()) // 90
+
