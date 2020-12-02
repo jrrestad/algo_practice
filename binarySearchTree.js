@@ -6,7 +6,7 @@ class Node{
     }
 }
 
-class BinarySearch {
+class BinarySearchTree {
     constructor() {
         this.root = null;
     }
@@ -79,17 +79,17 @@ class BinarySearch {
     }
 }
 
-const emptyTree = new BinarySearch();
+const emptyTree = new BinarySearchTree();
 
-const oneNodeTree = new BinarySearch();
+const oneNodeTree = new BinarySearchTree();
     oneNodeTree.root = new Node(10);
 
-const twoLevelTree = new BinarySearch();
+const twoLevelTree = new BinarySearchTree();
     twoLevelTree.root = new Node(10);
     twoLevelTree.root.left = new Node(5);
     twoLevelTree.root.right = new Node(15);
 
-const bigTree = new BinarySearch();
+const bigTree = new BinarySearchTree();
 bigTree.insertNode(25)
 .insertNode(15)
 .insertNode(10)
