@@ -21,16 +21,18 @@ class BinarySearchTree {
             this.root = node;
         } else {
             let current = this.root;
+            // while current !== to null is true...
             while (current !== null) {
                 if (newValue <= current.data) {
-                    if (!current.left) {
+                    // if !current.left, or current.left = null is true...
+                    if (current.left == null) {
                         current.left = node;
                         break;
                     } else {
                         current = current.left;
                     }
                 } else {
-                    if (!current.right) {
+                    if (current.right == null) {
                         current.right = node;
                         break;
                     } else {
@@ -95,6 +97,21 @@ class BinarySearchTree {
         }
         return false
     }
+
+    rContains(value, current = this.root) {
+        if (current == null) {
+            return false;
+        }
+        if (value == current.data) {
+            return true;
+        }
+        if (value < current.data) {
+            return this.rContains(value, current.left)
+        }
+        if (value > current.data) {
+            return this.rContains(value, current.right)
+        }
+    }
 }
 
 const emptyTree = new BinarySearchTree();
@@ -142,4 +159,5 @@ console.log(bigTree.findIMin()) // 4
 console.log(bigTree.findIMax()) // 90
 console.log(bigTree.findRMax()) // 90
 console.log(bigTree.contains(35)) // true
+console.log(bigTree.rContains(35)) // true
 
