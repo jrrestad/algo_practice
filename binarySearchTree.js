@@ -1,4 +1,4 @@
-class Node{
+class Node {
     constructor(data) {
         this.data = data;
         this.left = null;
@@ -13,10 +13,10 @@ class BinarySearchTree {
     isEmpty() {
         return this.root === null;
     }
+
     insertNode(newValue) {
         const node = new Node(newValue);
-
-        if (this.isEmpty()) {
+        if (this.isEmpty() == true) {
             // first node is the root if instantiating an empty list
             this.root = node;
         } else {
@@ -61,6 +61,7 @@ class BinarySearchTree {
             return current.data;
         }
     }
+
     findIMax(current = this.root) {
         if (current == null) {
             return null;
@@ -70,12 +71,29 @@ class BinarySearchTree {
         }
         return current.data;
     }
+
     findRMax(current = this.root) {
         if (current.right !== null) {
             return this.findRMax(current.right)
         } else {
             return current.data;
         }
+    }
+
+    contains(value) {
+        let current = this.root;
+        while (current != null) {
+            if (current.data == value) {
+                return true
+            }
+            if (value < current.data) {
+                current = current.left;
+            }
+            if (value > current.data) {
+                current = current.right;
+            }
+        }
+        return false
     }
 }
 
@@ -123,4 +141,5 @@ console.log(bigTree.findRMin()) // 4
 console.log(bigTree.findIMin()) // 4
 console.log(bigTree.findIMax()) // 90
 console.log(bigTree.findRMax()) // 90
+console.log(bigTree.contains(35)) // true
 
